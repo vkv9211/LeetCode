@@ -10,6 +10,7 @@ This GitHub repository contains solutions to LeetCode problems
 ## Hash Table
 |  |
 | ------- |
+| [0202-happy-number](https://github.com/vkv9211/LeetCode/tree/master/0202-happy-number) |
 | [1387-find-elements-in-a-contaminated-binary-tree](https://github.com/vkv9211/LeetCode/tree/master/1387-find-elements-in-a-contaminated-binary-tree) |
 | [2107-find-unique-binary-string](https://github.com/vkv9211/LeetCode/tree/master/2107-find-unique-binary-string) |
 ## String
@@ -46,9 +47,14 @@ This GitHub repository contains solutions to LeetCode problems
 ## Two Pointers
 |  |
 | ------- |
+| [0202-happy-number](https://github.com/vkv9211/LeetCode/tree/master/0202-happy-number) |
 | [0680-valid-palindrome-ii](https://github.com/vkv9211/LeetCode/tree/master/0680-valid-palindrome-ii) |
 ## Greedy
 |  |
 | ------- |
 | [0680-valid-palindrome-ii](https://github.com/vkv9211/LeetCode/tree/master/0680-valid-palindrome-ii) |
+## Math
+|  |
+| ------- |
+| [0202-happy-number](https://github.com/vkv9211/LeetCode/tree/master/0202-happy-number) |
 <!---LeetCode Topics End-->
