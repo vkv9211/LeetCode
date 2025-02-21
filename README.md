@@ -15,6 +15,7 @@ This GitHub repository contains solutions to LeetCode problems
 ## String
 |  |
 | ------- |
+| [0680-valid-palindrome-ii](https://github.com/vkv9211/LeetCode/tree/master/0680-valid-palindrome-ii) |
 | [1516-the-k-th-lexicographical-string-of-all-happy-strings-of-length-n](https://github.com/vkv9211/LeetCode/tree/master/1516-the-k-th-lexicographical-string-of-all-happy-strings-of-length-n) |
 | [2107-find-unique-binary-string](https://github.com/vkv9211/LeetCode/tree/master/2107-find-unique-binary-string) |
 ## Backtracking
@@ -42,4 +43,12 @@ This GitHub repository contains solutions to LeetCode problems
 |  |
 | ------- |
 | [1387-find-elements-in-a-contaminated-binary-tree](https://github.com/vkv9211/LeetCode/tree/master/1387-find-elements-in-a-contaminated-binary-tree) |
+## Two Pointers
+|  |
+| ------- |
+| [0680-valid-palindrome-ii](https://github.com/vkv9211/LeetCode/tree/master/0680-valid-palindrome-ii) |
+## Greedy
+|  |
+| ------- |
+| [0680-valid-palindrome-ii](https://github.com/vkv9211/LeetCode/tree/master/0680-valid-palindrome-ii) |
 <!---LeetCode Topics End-->
