@@ -21,19 +21,24 @@
  */
 class FindElements {
 
-    TreeNode treeNode;
+    //TreeNode treeNode;
+    HashSet<Integer> set = new HashSet<>();
 
 
     public FindElements(TreeNode root) {
-        if(root == null){
-            treeNode= new TreeNode(0);
+        findElementUtil(root, 0);
+    
+       // printTreeNode(treeNode);
+    }
+
+    private void findElementUtil(TreeNode root , int value){
+        if(null == root ){
             return ;
         }
-
-        FindElementsUtil(root , root.left);
-        FindElementsUtil(root , root.right);
-        treeNode = root;
-       // printTreeNode(treeNode);
+        root.val = value;
+        set.add(value);
+        findElementUtil(root.left, 2*value+1);
+        findElementUtil(root.right, 2*value+2);
     }
 
     private void printTreeNode(TreeNode node){
@@ -47,38 +52,13 @@ class FindElements {
     }
     
     public boolean find(int target) {
-        return findUtil(this.treeNode, target);
-
-       //return false;
+       
+        return set.contains(target);
+      
     }
 
-    private boolean findUtil(TreeNode root, int target){
-        if(root == null){
-            return false;
-        }
-        if(root.val == target){
-            return true;
-        }
+    
 
-        return findUtil(root.left,target) || findUtil(root.right,target);
-
-    }
-
-    private void FindElementsUtil(TreeNode parent, TreeNode child){
-        if(child == null){
-            return ;
-        }
-        if(parent.val ==-1){
-            parent.val = 0;
-        }
-        if(child == parent.left){
-            child.val = 2*parent.val + 1;
-        }
-        if(child == parent.right){
-            child.val = 2*parent.val + 2;
-        }
-        FindElementsUtil(child, child.left);
-        FindElementsUtil(child, child.right);
-    }
+   
 }
 
