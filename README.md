@@ -6,6 +6,7 @@ This GitHub repository contains solutions to LeetCode problems
 ## Array
 |  |
 | ------- |
+| [1849-maximum-absolute-sum-of-any-subarray](https://github.com/vkv9211/LeetCode/tree/master/1849-maximum-absolute-sum-of-any-subarray) |
 | [2107-find-unique-binary-string](https://github.com/vkv9211/LeetCode/tree/master/2107-find-unique-binary-string) |
 ## Hash Table
 |  |
@@ -57,4 +58,8 @@ This GitHub repository contains solutions to LeetCode problems
 |  |
 | ------- |
 | [0202-happy-number](https://github.com/vkv9211/LeetCode/tree/master/0202-happy-number) |
+## Dynamic Programming
+|  |
+| ------- |
+| [1849-maximum-absolute-sum-of-any-subarray](https://github.com/vkv9211/LeetCode/tree/master/1849-maximum-absolute-sum-of-any-subarray) |
 <!---LeetCode Topics End-->
