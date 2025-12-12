@@ -34,10 +34,12 @@ This GitHub repository contains solutions to LeetCode problems
 ## Depth-First Search
 |  |
 | ------- |
+| [0547-number-of-provinces](https://github.com/vkv9211/LeetCode/tree/master/0547-number-of-provinces) |
 | [1387-find-elements-in-a-contaminated-binary-tree](https://github.com/vkv9211/LeetCode/tree/master/1387-find-elements-in-a-contaminated-binary-tree) |
 ## Breadth-First Search
 |  |
 | ------- |
+| [0547-number-of-provinces](https://github.com/vkv9211/LeetCode/tree/master/0547-number-of-provinces) |
 | [1387-find-elements-in-a-contaminated-binary-tree](https://github.com/vkv9211/LeetCode/tree/master/1387-find-elements-in-a-contaminated-binary-tree) |
 ## Design
 |  |
@@ -65,4 +67,12 @@ This GitHub repository contains solutions to LeetCode problems
 | ------- |
 | [0905-length-of-longest-fibonacci-subsequence](https://github.com/vkv9211/LeetCode/tree/master/0905-length-of-longest-fibonacci-subsequence) |
 | [1849-maximum-absolute-sum-of-any-subarray](https://github.com/vkv9211/LeetCode/tree/master/1849-maximum-absolute-sum-of-any-subarray) |
+## Union Find
+|  |
+| ------- |
+| [0547-number-of-provinces](https://github.com/vkv9211/LeetCode/tree/master/0547-number-of-provinces) |
+## Graph
+|  |
+| ------- |
+| [0547-number-of-provinces](https://github.com/vkv9211/LeetCode/tree/master/0547-number-of-provinces) |
 <!---LeetCode Topics End-->
