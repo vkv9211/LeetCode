@@ -49,7 +49,7 @@ class DSU{
 class Solution {
     public int findCircleNum(int[][] isConnected) {
         int n = isConnected.length;
-        System.out.println("n = "+n);
+       /* System.out.println("n = "+n);
         for(int i=0;i<n;i++){
             System.out.print("source = "+i+" : " );
             for(int j=0;j<n;j++){
@@ -58,7 +58,7 @@ class Solution {
                 }
             }
             System.out.println();
-        } 
+        } */
 
         DSU dsu = new DSU(n);
 
@@ -78,7 +78,7 @@ class Solution {
 
         int count =0;
         for(int i=0;i<n;i++){
-            System.out.println("i = "+i+",parent = "+dsu.parent[i]+",size = "+dsu.size[dsu.parent[i]]);
+           // System.out.println("i = "+i+",parent = "+dsu.parent[i]+",size = "+dsu.size[dsu.parent[i]]);
             if(i == dsu.parent[i]){
                 count++;
             }
