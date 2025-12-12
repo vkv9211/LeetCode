@@ -72,9 +72,9 @@ class Solution {
             }
         }
 
-        for(int i=0;i<n;i++){
+        /*for(int i=0;i<n;i++){
             dsu.findParent(i);
-        }
+        } */
 
         int count =0;
         for(int i=0;i<n;i++){
