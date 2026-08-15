@@ -1,59 +1,90 @@
 class Solution {
     public List<List<String>> solveNQueens(int n) {
-        StringBuilder s = new StringBuilder();
+        // StringBuilder s = new StringBuilder();
+        // for(int i =0;i<n;i++){
+        //     s.append('.');
+        // }
+        // List<List<String>> ans = new ArrayList<>();
+        // List<String> board = new ArrayList<>();
+        // for(int i =0;i<n;i++){
+        //     board.add(s.toString());
+        // }
+
+        // int col =0;
+        // int row = 0;
+        // for(int i =col;i<n;i++){
+        //     StringBuilder sb = new StringBuilder(board.get(row));
+        //         sb.setCharAt(i,'Q');
+        //         board.set(row,sb.toString());
+        //        // System.out.println("********************");
+        //        // System.out.println(board);
+        //         utilFunc(row+1,n,board,ans);
+        //         sb.setCharAt(i,'.');
+        //         board.set(row,sb.toString());
+        // }
+
+        List<List<String>>ans = new ArrayList<>();
+        char[][] matrix = new char[n][n];
         for(int i =0;i<n;i++){
-            s.append('.');
-        }
-        List<List<String>> ans = new ArrayList<>();
-        List<String> board = new ArrayList<>();
-        for(int i =0;i<n;i++){
-            board.add(s.toString());
+            for(int j=0;j<n;j++){
+                matrix[i][j] = '.';
+            }
         }
 
-        int col =0;
+       // printMatrix(n,matrix);
+        
+
         int row = 0;
-        for(int i =col;i<n;i++){
-            StringBuilder sb = new StringBuilder(board.get(row));
-                sb.setCharAt(i,'Q');
-                board.set(row,sb.toString());
-               // System.out.println("********************");
-               // System.out.println(board);
-                utilFunc(row+1,n,board,ans);
-                sb.setCharAt(i,'.');
-                board.set(row,sb.toString());
+        for(int col=0;col<n;col++){
+           // System.out.println("***************");
+            matrix[row][col] = 'Q';
+           // printMatrix(n,matrix);
+            utilFunc(row+1,n,matrix,ans);
+            matrix[row][col] ='.';
         }
         return ans;
     }
 
-    public void utilFunc(int row, int n, List<String> board, List<List<String>> ans){
+    public void printMatrix(int n, char[][] matrix){
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n;j++){
+                System.out.print(matrix[i][j]);
+            }
+            System.out.print(" ");
+        }
+        System.out.println();
+    }
+
+    public void utilFunc(int row, int n, char[][] matrix, List<List<String>> ans){
         if(row == n){
-            List<String> temp = new ArrayList<>(board);
+            List<String> temp = new ArrayList<>();
+            for(int i =0;i<n;i++){
+                temp.add(new String(matrix[i]));
+            }
+          //  System.out.println(temp);
             ans.add(temp);
             return ;
         }
 
         for(int i=0;i<n;i++){
-            if(isValidCell(row,i,n,board)){
-                StringBuilder sb = new StringBuilder(board.get(row));
-                sb.setCharAt(i,'Q');
-                board.set(row,sb.toString());
-              //  System.out.println(board);
-                utilFunc(row+1,n,board,ans);
-                sb.setCharAt(i,'.');
-                board.set(row,sb.toString());
+            if(isValidCell(row,i,n,matrix)){
+                matrix[row][i] ='Q';
+              //  printMatrix(n,matrix);
+                utilFunc(row+1,n,matrix,ans);
+                matrix[row][i] = '.';
             }
         }
     }
 
-    public boolean isValidCell(int row, int col, int n, List<String> board){
+    public boolean isValidCell(int row, int col, int n, char[][] board){
         //System.out.println("In valid cell check row = "+row+", col = "+col);
         return rowCheck(row, n, board) && colCheck(col, n, board) && leftDiagCheck(row, col, n, board) && rightDiagCheck(row, col, n, board);
     }
 
-    public boolean rowCheck(int row, int n,List<String> board){
+    public boolean rowCheck(int row, int n,char[][] board){
         int count = 0;
         for(int i=0;i<n;i++){
-            if(board.get(row).charAt(i) == 'Q'){
+            if(board[row][i] == 'Q'){
                 count++;
             }
         }
@@ -61,37 +92,37 @@ class Solution {
         return count == 0;
     }
 
-    public boolean colCheck(int col, int n, List<String> board){
+    public boolean colCheck(int col, int n, char[][] board){
         int count = 0;
         for(int i=0;i<n;i++){
-            if(board.get(i).charAt(col) == 'Q'){
+            if(board[i][col] == 'Q'){
                 count++;
             }
         }
-       // System.out.println("colCheck col = "+col+", count = "+count);
+      //  System.out.println("colCheck col = "+col+", count = "+count);
         return count == 0;
     }
 
-    public boolean leftDiagCheck(int row, int col, int n, List<String> borad){
+    public boolean leftDiagCheck(int row, int col, int n, char[][] borad){
         int diff = row - col;
         int count = 0;
         for(int i =0;i<n;i++){
             for(int j=0;j<n;j++){
-                if((i-j == diff) && borad.get(i).charAt(j) == 'Q'){
+                if((i-j == diff) && borad[i][j] == 'Q'){
                     count++;
                 }
             }
         }
-       // System.out.println("leftDiagCheck row = "+row+", col = "+col+", count = "+count);
+      //  System.out.println("leftDiagCheck row = "+row+", col = "+col+", count = "+count);
         return count == 0;
     }
 
-    public boolean rightDiagCheck(int row, int col, int n, List<String> borad){
+    public boolean rightDiagCheck(int row, int col, int n, char[][] borad){
         int sum = row + col;
         int count =0;
         for(int i =0;i<n;i++){
             for(int j=0;j<n;j++){
-                if((i+j == sum) && borad.get(i).charAt(j) == 'Q'){
+                if((i+j == sum) && borad[i][j] == 'Q'){
                     count++;
                 }
             }
