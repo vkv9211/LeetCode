@@ -78,7 +78,7 @@ class Solution {
 
     public boolean isValidCell(int row, int col, int n, char[][] board){
         //System.out.println("In valid cell check row = "+row+", col = "+col);
-        return rowCheck(row, n, board) && colCheck(col, n, board) && leftDiagCheck(row, col, n, board) && rightDiagCheck(row, col, n, board);
+        return colCheck(col, n, board) && leftDiagCheck(row, col, n, board) && rightDiagCheck(row, col, n, board);
     }
 
     public boolean rowCheck(int row, int n,char[][] board){
