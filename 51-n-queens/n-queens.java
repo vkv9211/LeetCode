@@ -82,25 +82,25 @@ class Solution {
     }
 
     public boolean rowCheck(int row, int n,char[][] board){
-        int count = 0;
+       // int count = 0;
         for(int i=0;i<n;i++){
             if(board[row][i] == 'Q'){
-                count++;
+                return false;
             }
         }
       //  System.out.println("rowCheck row = "+row+", count = "+count);
-        return count == 0;
+        return true;
     }
 
     public boolean colCheck(int col, int n, char[][] board){
-        int count = 0;
+       // int count = 0;
         for(int i=0;i<n;i++){
             if(board[i][col] == 'Q'){
-                count++;
+                return false;
             }
         }
       //  System.out.println("colCheck col = "+col+", count = "+count);
-        return count == 0;
+        return true;
     }
 
     public boolean leftDiagCheck(int row, int col, int n, char[][] borad){
@@ -109,12 +109,12 @@ class Solution {
         for(int i =0;i<n;i++){
             for(int j=0;j<n;j++){
                 if((i-j == diff) && borad[i][j] == 'Q'){
-                    count++;
+                    return false;
                 }
             }
         }
       //  System.out.println("leftDiagCheck row = "+row+", col = "+col+", count = "+count);
-        return count == 0;
+        return true;
     }
 
     public boolean rightDiagCheck(int row, int col, int n, char[][] borad){
@@ -123,11 +123,11 @@ class Solution {
         for(int i =0;i<n;i++){
             for(int j=0;j<n;j++){
                 if((i+j == sum) && borad[i][j] == 'Q'){
-                    count++;
+                    return false;
                 }
             }
         }
       //  System.out.println("rightDiagCheck row = "+row+", col = "+col+", count = "+count);
-        return count == 0;
+        return true;
     }
 }
