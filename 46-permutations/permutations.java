@@ -17,9 +17,9 @@ class Solution {
         for(int i=0;i<len;i++){
         
             swap(start, i, nums);
-            list.add(nums[start]);
+           // list.add(nums[start]);
             Util2(start+1,len,nums,list,ans);
-            list.remove(list.size()-1);
+           // list.remove(list.size()-1);
             swap(i, start, nums);
         }
 
@@ -27,16 +27,20 @@ class Solution {
     }
 
     public void Util2(int start,int len, int[] nums, List<Integer> list, List<List<Integer>> ans){
-        if(list.size() == len){
-            ans.add(new ArrayList<>(list));
+        if(start >= len){
+            List<Integer> temp = new ArrayList<>();
+            for(int x : nums){
+                temp.add(x);
+            }
+            ans.add(temp);
             return;
         }
 
         for(int i= start;i<len;i++){
             swap(start, i, nums);
-            list.add(nums[start]);
+           // list.add(nums[start]);
             Util2(start+1, len, nums, list, ans);
-            list.remove(list.size()-1);
+           // list.remove(list.size()-1);
             swap(i, start, nums);
         }
     }
