@@ -5,7 +5,7 @@ class Solution {
         int row = image.length;
         int col = image[0].length;
 
-        System.out.println("init = "+init+", color = "+color);
+        //System.out.println("init = "+init+", color = "+color);
         int[][] dir = {{0,1},{0,-1},{1,0},{-1,0}};
         boolean[][] dp = new boolean[row][col];
 
@@ -16,7 +16,7 @@ class Solution {
     }
 
     public void dfs(int sr, int sc, int color, int init, int row, int col, int[][] image, int[][] dir, boolean[][] dp){
-        System.out.println("sr= "+sr+", sc = "+sc+", init = "+init+", color = "+color);
+       // System.out.println("sr= "+sr+", sc = "+sc+", init = "+init+", color = "+color);
         image[sr][sc] = color;
         dp[sr][sc] = true;
 
