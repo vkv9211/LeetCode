@@ -3,8 +3,6 @@ class Solution {
         int row = board.length;
         int col = board[0].length;
 
-        boolean[][] dp = new boolean[row][col];
-
         Queue<int[]> q = new LinkedList<>();
 
         for(int i=0;i<row;i++){
@@ -36,21 +34,30 @@ class Solution {
             int r = temp[0];
             int c = temp[1];
            // System.out.println("r = "+r+", c = "+c);
-            dp[r][c] = true;
+            board[r][c] = 'S';
             for(int i =0;i<4;i++){
                 int nr = r+dir[i][0];
                 int nc = c+dir[i][1];
 
-                if(nr >=0 && nr <row && nc >=0 && nc <col && board[nr][nc] =='O' && !dp[nr][nc]){
+                if(nr >=0 && nr <row && nc >=0 && nc <col && board[nr][nc] =='O'){
                     q.add(new int[]{nr,nc});
                 }
             }
         }
 
+        // for(int i=0;i<row;i++){
+        //     for(int j=0;j<col;j++){
+        //         System.out.print(board[i][j]+" ");
+        //     }
+        //     System.out.println();
+        // }
+
         for(int i=0;i<row;i++){
             for(int j=0;j<col;j++){
-                if(!dp[i][j]){
+                if(board[i][j] == 'O'){
                     board[i][j] = 'X';
+                }else if(board[i][j] == 'S'){
+                    board[i][j] = 'O';
                 }
             }
         }
