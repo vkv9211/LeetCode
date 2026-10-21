@@ -8,8 +8,9 @@ class Solution {
             Arrays.fill(dp[i], -1);
         }
 
-        return recursive(row-1, col-1, grid, dp);
+        //return recursive(row-1, col-1, grid, dp);
        //return tabulation(grid);
+        return tabulationOpt(grid);
     }
 
     public int tabulation(int[][] grid){
@@ -34,6 +35,28 @@ class Solution {
             }
         }
         return dp[row-1][col-1];
+    }
+
+    public int tabulationOpt(int[][] grid){
+        int row = grid.length;
+        int col = grid[0].length;
+
+        int[] prev = new int[col];
+        prev[0] = grid[0][0];
+
+        for(int i=1;i<col;i++){
+            prev[i] = grid[0][i]+prev[i-1];
+        }
+
+        for(int i=1;i<row;i++){
+            int[] temp = new int[col];
+            temp[0] = grid[i][0]+prev[0];
+            for(int j=1;j<col;j++){
+                temp[j] = grid[i][j]+ Math.min(temp[j-1], prev[j]);
+            }
+            prev = temp;
+        }
+        return prev[col-1];
     }
 
     public int recursive(int row, int col, int[][] grid, int[][] dp){
