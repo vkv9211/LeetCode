@@ -10,7 +10,8 @@ class Solution {
 
         //return recMemoized(m-1,n-1,dp);
 
-        return tabulation(m,n);
+       // return tabulation(m,n);
+        return tabulationOptimized(m,n);
     }
 
     public int recMemoized(int row, int col, int[][] dp){
@@ -47,6 +48,21 @@ class Solution {
         }
 
         return dp[m-1][n-1];
+    }
+
+    public int tabulationOptimized(int m,int n){
+        int[] prev = new int[n];
+        Arrays.fill(prev,1);
+
+        for(int i=1;i<m;i++){
+            int[] temp = new int[n];
+            temp[0] = 1;
+            for(int j=1;j<n;j++){
+                temp[j] = prev[j]+temp[j-1];
+            }
+            prev = temp;
+        }
+        return prev[n-1];
     }
 
     public void recursion(int row, int col, int m,int n, StringBuilder sb, Set<String> set){
