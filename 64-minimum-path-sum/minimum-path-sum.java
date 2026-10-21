@@ -2,9 +2,14 @@ class Solution {
     public int minPathSum(int[][] grid) {
         int row = grid.length;
         int col = grid[0].length;
+        int[][] dp = new int[row][col];
 
-       // return recursive(row-1, col-1, grid);
-       return tabulation(grid);
+        for(int i=0;i<row;i++){
+            Arrays.fill(dp[i], -1);
+        }
+
+        return recursive(row-1, col-1, grid, dp);
+       //return tabulation(grid);
     }
 
     public int tabulation(int[][] grid){
@@ -31,19 +36,24 @@ class Solution {
         return dp[row-1][col-1];
     }
 
-    public int recursive(int row, int col, int[][] grid){
+    public int recursive(int row, int col, int[][] grid, int[][] dp){
         if(row == 0 && col == 0){
             return grid[0][0];
         }
 
         if(row< 0 || col <0){
-            return 0;
+            return Integer.MAX_VALUE/2;
         }
 
-        int left = grid[row][col] + recursive(row, col-1, grid);
-        int up = grid[row][col] + recursive(row-1, col, grid);
-        System.out.println("row = "+row+", col = "+col+", left = "+left+", up = "+up);
+        if(dp[row][col] != -1){
+            return dp[row][col];
+        }
 
-        return Math.min(left,up);
+        int left = grid[row][col] + recursive(row, col-1, grid,dp);
+        int up = grid[row][col] + recursive(row-1, col, grid,dp);
+       // System.out.println("row = "+row+", col = "+col+", left = "+left+", up = "+up);
+
+        dp[row][col] = Math.min(left,up);
+        return dp[row][col];
     }
 }
