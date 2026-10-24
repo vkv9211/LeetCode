@@ -1,24 +1,25 @@
 class Solution {
     public int minFallingPathSum(int[][] matrix) {
-        int len = matrix.length;
+        // int len = matrix.length;
 
-        int[][] dp = new int[len][len];
-        for(int i=0;i<len;i++){
-            Arrays.fill(dp[i], Integer.MIN_VALUE/2);
-        }
+        // int[][] dp = new int[len][len];
+        // for(int i=0;i<len;i++){
+        //     Arrays.fill(dp[i], Integer.MIN_VALUE/2);
+        // }
 
-        if(len ==1){
-            return matrix[0][0];
-        }
-        int min = Integer.MAX_VALUE/2;
-        for(int i=0;i<len;i++){
+        // if(len ==1){
+        //     return matrix[0][0];
+        // }
+        // int min = Integer.MAX_VALUE/2;
+        // for(int i=0;i<len;i++){
             
-            min = Math.min(min, recursion(0,i,len,matrix,dp));
+        //     min = Math.min(min, recursion(0,i,len,matrix,dp));
 
-          //  System.out.println("i = "+i+", left = "+left+", center = "+center+", right = "+right+", min = "+min);
-        }
+        //   //  System.out.println("i = "+i+", left = "+left+", center = "+center+", right = "+right+", min = "+min);
+        // }
 
-        return min;
+        // return min;
+        return tabulation(matrix);
     }
 
     public int recursion(int row, int col, int len, int[][] matrix, int[][] dp){
@@ -40,5 +41,41 @@ class Solution {
 
         dp[row][col] =  Math.min(left, Math.min(center, right));
         return dp[row][col];
+    }
+
+    public int tabulation(int[][] matrix){
+        int len = matrix.length;
+
+        int[][] dp = new int[len][len];
+
+        for(int i=0;i<len;i++){
+            dp[len-1][i] = matrix[len-1][i];
+        }
+
+        for(int i=len-2;i>=0;i--){
+            for(int j=0;j<len;j++){
+                int left, center, right;
+                left = center = right = Integer.MAX_VALUE / 2;
+
+                
+                if(j-1 >=0){
+                    left = dp[i+1][j-1];
+                }
+                center = dp[i+1][j];
+                if((j+1) < len){
+                    right =  dp[i+1][j+1];               
+                }
+
+                dp[i][j] = matrix[i][j] + Math.min(left, Math.min(center, right));
+            }
+        }
+
+        int min = Integer.MAX_VALUE;
+
+        for(int i=0;i<len;i++){
+            min = Math.min(min, dp[0][i]);
+        }
+
+        return min;
     }
 }
