@@ -18,7 +18,8 @@ class Solution {
         // int downG = triangle.get(0).get(0) + recursion(1,1,triangle, dp);
 
         // return Math.min(down, downG);
-        return tabulation(triangle);
+        // return tabulation(triangle);
+        return tabOptimization(triangle);
     }
 
     public int recursion(int index, int row, List<List<Integer>> triangle, int[][] dp){
@@ -54,6 +55,25 @@ class Solution {
         }
 
         return dp[0][0];
+    }
+
+    public int tabOptimization(List<List<Integer>> triangle){
+        int len = triangle.size();
+
+        int[] prev = new int[len];
+
+        for(int i =0;i<len;i++){
+            prev[i] = triangle.get(len-1).get(i);
+        }
+
+        for(int i=len-2;i>=0;i--){
+            int[] curr = new int[len];
+            for(int j=i;j>=0;j--){
+                curr[j] = triangle.get(i).get(j) + Math.min(prev[j], prev[j+1]);
+            }
+            prev = curr;
+        }
+        return prev[0];
     }
 
     
