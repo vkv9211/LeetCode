@@ -19,7 +19,8 @@ class Solution {
         // }
 
         // return min;
-        return tabulation(matrix);
+        //return tabulation(matrix);
+        return tabOpt(matrix);
     }
 
     public int recursion(int row, int col, int len, int[][] matrix, int[][] dp){
@@ -74,6 +75,44 @@ class Solution {
 
         for(int i=0;i<len;i++){
             min = Math.min(min, dp[0][i]);
+        }
+
+        return min;
+    }
+
+    int tabOpt(int[][] matrix){
+        int len = matrix.length;
+
+        int[] front = new int[len];
+
+        for(int i=0;i<len;i++){
+            front[i] = matrix[len-1][i];
+        }
+
+        for(int i=len-2;i>=0;i--){
+            int[] curr = new int[len];
+            for(int j=0;j<len;j++){
+                int left, center, right;
+                left = center = right = Integer.MAX_VALUE / 2;
+
+                
+                if(j-1 >=0){
+                    left = front[j-1];
+                }
+                center = front[j];
+                if((j+1) < len){
+                    right =  front[j+1];               
+                }
+
+                curr[j] = matrix[i][j] + Math.min(left, Math.min(center, right));
+            }
+
+            front = curr;
+        }
+
+        int min = Integer.MAX_VALUE;
+        for(int i=0;i<len;i++){
+            min = Math.min(min, front[i]);
         }
 
         return min;
