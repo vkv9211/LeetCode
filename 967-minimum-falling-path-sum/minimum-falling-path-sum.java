@@ -36,11 +36,11 @@ class Solution {
             return dp[row][col];
         }
 
-        int left = matrix[row][col] + recursion(row+1, col-1, len, matrix, dp);
-        int center = matrix[row][col] + recursion(row+1, col, len, matrix, dp);
-        int right = matrix[row][col] + recursion(row+1, col+1, len, matrix, dp);
+        int left =  recursion(row+1, col-1, len, matrix, dp);
+        int center =  recursion(row+1, col, len, matrix, dp);
+        int right =  recursion(row+1, col+1, len, matrix, dp);
 
-        dp[row][col] =  Math.min(left, Math.min(center, right));
+        dp[row][col] = matrix[row][col] + Math.min(left, Math.min(center, right));
         return dp[row][col];
     }
 
