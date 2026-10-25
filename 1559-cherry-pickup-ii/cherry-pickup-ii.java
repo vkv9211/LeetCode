@@ -49,4 +49,47 @@ class Solution {
 
         return dp[crow][col1][col2] = max;
     }
+
+    public int tabulation(int[][] grid){
+        int row= grid.length;
+        int col = grid[0].length;
+
+        int[][][] dp = new int[row][col][col];
+
+        for(int j1=0;j1<col;j1++){
+            for(int j2=0;j2<col;j2++){
+                if(j1 == j2){
+                    dp[row-1][j1][j2] = grid[row-1][j1];
+                }else{
+                    dp[row-1][j1][j2] = grid[row-1][j1] + grid[row-1][j2];
+                }
+            }
+        }
+
+        for(int i=row-2;i>=0;i--){
+            for(int j1=0;j1<col;j1++){
+                for(int j2=0;j2<col;j2++){
+                    int maxi = Integer.MIN_VALUE/2;
+                    for(int dj1=-1;dj1<2;dj1++){
+                        for(int dj2=-1;dj2<2;dj2++){
+                            int value = 0;
+                            if(j1 == j2){
+                                value += grid[i][j1];
+                            }else{
+                                value += grid[i][j1] + grid[i][j2];
+                            }
+                            if(j1+dj1 >=0 && j1+dj1 < col && j2+dj2 >=0 && j2+dj2 <col){
+                                value += dp[i+1][j1+dj1][j2+dj2];
+                            }else{
+                                value += Integer.MIN_VALUE/2;
+                            }
+                            maxi = Math.max(maxi, value);
+                        }
+                    }
+                    dp[i][j1][j2] = maxi;
+                }
+            }
+        }
+        return dp[0][0][col-1];
+    }
 }
