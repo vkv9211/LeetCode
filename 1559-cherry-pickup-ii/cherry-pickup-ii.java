@@ -1,20 +1,21 @@
 class Solution {
     public int cherryPickup(int[][] grid) {
-        int row = grid.length;
-        int col = grid[0].length;
+        // int row = grid.length;
+        // int col = grid[0].length;
 
-        int[][][] dp = new int[row][col][col];
+        // int[][][] dp = new int[row][col][col];
 
-        for(int i=0;i<row;i++){
-            for(int j=0;j<col;j++){
-                for(int k=0;k<col;k++){
-                    dp[i][j][k] = -1;
-                }
+        // for(int i=0;i<row;i++){
+        //     for(int j=0;j<col;j++){
+        //         for(int k=0;k<col;k++){
+        //             dp[i][j][k] = -1;
+        //         }
                 
-            }
-        }
+        //     }
+        // }
 
-        return recursion(0,0,col-1,row,col,grid,dp);
+        // return recursion(0,0,col-1,row,col,grid,dp);
+        return tabulation(grid);
     }
 
     public int recursion(int crow, int col1, int col2, int row, int col, int[][] grid, int[][][] dp){
