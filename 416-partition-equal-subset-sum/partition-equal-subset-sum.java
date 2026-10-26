@@ -13,10 +13,10 @@ class Solution {
         }
 
         sum = sum/2;
-        int[][] dp = new int[len][sum+1];
-        for(int i=0;i<len;i++){
-            Arrays.fill(dp[i],-1);
-        }
+       // int[][] dp = new int[len][sum+1];
+       // for(int i=0;i<len;i++){
+        //    Arrays.fill(dp[i],-1);
+        //}
 
         // for(int i=0;i<len;i++){
         //     dp[i][0] = 1;
@@ -27,7 +27,37 @@ class Solution {
         //     }
         // }
 
-        return recursion(len-1,sum,nums,dp)==1  ;
+       // return recursion(len-1,sum,nums,dp)==1;
+
+        return tabulation(nums,sum);
+    }
+
+    public boolean tabulation(int[] nums, int sum){
+        int len = nums.length;
+
+        boolean[][] dp = new boolean[len][sum+1];
+        for(int i=0;i<len;i++){
+            dp[i][0] = true;
+        }
+
+        for(int i=0;i<len;i++){
+            if(nums[i] == sum){
+                dp[0][i] = true;
+            }
+        }
+
+        for(int i=1;i<len;i++){
+            for(int j=1;j<=sum;j++){
+                boolean notTake = dp[i-1][j];
+                boolean take = false;
+                if(j>=nums[i]){
+                    take = dp[i-1][j-nums[i]];
+                }
+                dp[i][j] = take || notTake;
+            }
+        }
+
+        return dp[len-1][sum];
     }
 
     public int recursion(int index, int sum, int[] nums,int[][] dp){
