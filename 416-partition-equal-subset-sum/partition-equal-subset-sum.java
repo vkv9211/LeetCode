@@ -29,7 +29,37 @@ class Solution {
 
        // return recursion(len-1,sum,nums,dp)==1;
 
-        return tabulation(nums,sum);
+       // return tabulation(nums,sum);
+
+       return tabOpt(nums, sum);
+    }
+
+    public boolean tabOpt(int[] nums, int sum){
+        boolean[] prev = new boolean[sum+1];
+        int len = nums.length;
+
+        for(int i=0;i<len;i++){
+            if(nums[i] == sum){
+                prev[i] = true;
+            }
+        }
+        prev[0] = true;
+
+        for(int i=1;i<len;i++){
+            boolean[] curr = new boolean[sum+1];
+            curr[0] = true;
+            for(int j=1;j<=sum;j++){
+                boolean notTake = prev[j];
+                boolean take = false;
+                if(j >= nums[i]){
+                    take = prev[j-nums[i]];
+                }
+
+                curr[j] = take || notTake;
+            }
+            prev= curr;
+        }
+        return prev[sum];
     }
 
     public boolean tabulation(int[] nums, int sum){
